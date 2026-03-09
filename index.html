@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <link rel="manifest" href="manifest.json">
+    <title>VULCAN | 9.9M INJECTOR</title>
+    <style>
+        :root { --neon: #00f2ea; --bg: #0b0c10; --panel: rgba(15, 15, 15, 0.95); }
+        body { margin: 0; background: var(--bg); color: white; font-family: 'Courier New', monospace; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; overflow: hidden; }
+        #mod-panel { border: 2px solid var(--neon); padding: 30px; border-radius: 12px; background: var(--panel); text-align: center; box-shadow: 0 0 25px var(--neon); width: 80%; }
+        .inject-btn { background: #000; border: 1px solid var(--neon); color: var(--neon); padding: 15px 25px; font-size: 16px; cursor: pointer; text-transform: uppercase; box-shadow: 0 0 10px var(--neon); margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div id="mod-panel">
+        <div style="font-size: 12px; color: var(--neon);">VULCAN DATA INJECTOR v5.0</div>
+        <div style="font-size: 24px; font-weight: bold;">[ 9,999,999 ]</div>
+        <button class="inject-btn" onclick="startInjection()">INJECT PAYLOAD</button>
+    </div>
+    <script>
+        const KEY = "key67"; 
+        async function startInjection() {
+            try {
+                const handle = await window.showSaveFilePicker({
+                    suggestedName: 'save_data.johnson',
+                    types: [{ description: 'Vulcan Script', accept: {'text/plain': ['.johnson']} }]
+                });
+                const writable = await handle.createWritable();
+                await writable.write(JSON.stringify({"auth": KEY, "score": 9999999}));
+                await writable.close();
+                alert("SUCCESS: 9,999,999 INJECTED.");
+            } catch (err) { alert("ERROR: CANCELLED."); }
+        }
+    </script>
+</body>
+</html>
